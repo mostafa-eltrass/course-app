@@ -1,3 +1,4 @@
+import 'package:course_app/onboarding/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'onboarding_model.dart';
@@ -114,7 +115,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       SharedPreferences prefs = await SharedPreferences.getInstance();
                       await prefs.setBool("seenOnboarding", true);
 
-                      Navigator.pushReplacementNamed(context, "HomeScreen");
+                      Navigator.pushReplacementNamed(context,  WelcomeScreen.id );
                     },
                     child: Text("GET STARTED",
                     style: TextStyle(
@@ -125,7 +126,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       : TextButton(
 
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, "HomeScreen");
+                      Navigator.pushReplacementNamed(context,  WelcomeScreen.id);
                     },
                     child: Text(
                       "SKIP",
