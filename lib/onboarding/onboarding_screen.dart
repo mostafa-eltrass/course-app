@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'onboarding_model.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -19,12 +20,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       desc: "Burger is simply dummy text of the printing and typesetting industry.",
     ),
     OnBoardingModel(
-      image: "assets/images/onboarding2.jpeg",
+      image: "assets/images/onboarding2.png",
       title: "Great Earnings",
       desc: "Burger has been the industry's standard dummy text ever since.",
     ),
     OnBoardingModel(
-      image: "assets/images/onboarding3.jpeg",
+      image: "assets/images/onboarding3.png",
       title: "Be Your Own Boss",
       desc: "Lorem Ipsum has been the industry's standard dummy text ever since.",
     ),
@@ -54,7 +55,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         const SizedBox(height: 20),
                         Image.asset(
                           pages[index].image,
-                          height: MediaQuery.of(context).size.height * 0.45,
+                          height: MediaQuery.of(context).size.height * 0.60,
                           fit: BoxFit.cover,
                         ),
 
@@ -109,12 +110,20 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
                   currentIndex == pages.length - 1
                       ? ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      await prefs.setBool("seenOnboarding", true);
+
                       Navigator.pushReplacementNamed(context, "HomeScreen");
                     },
-                    child: Text("GET STARTED"),
+                    child: Text("GET STARTED",
+                    style: TextStyle(
+                      color: Colors.blue
+                    ),
+                    ),
                   )
                       : TextButton(
+
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, "HomeScreen");
                     },

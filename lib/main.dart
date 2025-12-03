@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'onboarding/onboarding_screen.dart';
 
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -16,8 +19,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: OnBoardingScreen(),
+      initialRoute: OnBoardingScreen.id,
       routes: {
+
+        "OnBoardingScreen": (_) => OnBoardingScreen(),
         "HomeScreen": (_) => const MyHomePage(title: "Home"),
       },
     );
