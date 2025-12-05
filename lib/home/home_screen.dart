@@ -26,67 +26,63 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white, // الخلفية بيضاء
       body: pages[currentIndex],
 
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFF0066FF),
-        ),
-        child: BottomNavigationBar(
-          currentIndex: currentIndex,
-          onTap: (index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: (index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white, // لون البار أبيض
+        elevation: 10,
 
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white70,
+        selectedItemColor: const Color(0xFF0066FF), // اللون الأزرق عند الاختيار
+        unselectedItemColor: Colors.grey.shade400, // اللون الرمادي عند عدم الاختيار
 
-          showUnselectedLabels: false,
-          showSelectedLabels: true,
+        showUnselectedLabels: true,
+        showSelectedLabels: true,
 
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.school,
-                size: currentIndex == 0 ? 30 : 24,
-              ),
-              label: "Home",
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.school,
+              size: currentIndex == 0 ? 30 : 24,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.category,
-                size: currentIndex == 1 ? 30 : 24,
-              ),
-              label: "Categories",
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.category,
+              size: currentIndex == 1 ? 30 : 24,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.play_circle_fill,
-                size: currentIndex == 2 ? 30 : 24,
-              ),
-              label: "My Courses",
+            label: "Categories",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.play_circle_fill,
+              size: currentIndex == 2 ? 30 : 24,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.notifications,
-                size: currentIndex == 3 ? 30 : 24,
-              ),
-              label: "Alerts",
+            label: "My Courses",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.notifications,
+              size: currentIndex == 3 ? 30 : 24,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                size: currentIndex == 4 ? 30 : 24,
-              ),
-              label: "Profile",
+            label: "Alerts",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              size: currentIndex == 4 ? 30 : 24,
             ),
-          ],
-        ),
+            label: "Profile",
+          ),
+        ],
       ),
     );
   }
