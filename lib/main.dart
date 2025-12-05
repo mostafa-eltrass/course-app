@@ -1,5 +1,6 @@
 import 'package:course_app/auth/sign_in.dart';
 import 'package:course_app/auth/sign_up.dart';
+import 'package:course_app/home/home_screen.dart';
 import 'package:course_app/onboarding/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -22,11 +23,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      initialRoute: OnBoardingScreen.id,
+      initialRoute: HomeScreen.id,
       routes: {
 
-        "OnBoardingScreen": (context) => OnBoardingScreen(),
-        "HomeScreen": (context) =>   MyHomePage(title: "Home"),
+         OnBoardingScreen.id : (context) => OnBoardingScreen(),
+        HomeScreen.id: (context) =>   HomeScreen(),
         WelcomeScreen.id :(context) => WelcomeScreen(),
         SignUp.id :(context) => SignUp(),
         SignIn.id :(context) => SignIn()
@@ -35,15 +36,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({super.key, required this.title});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: const Center(child: Text("Welcome To Home Screen!")),
-    );
-  }
-}
