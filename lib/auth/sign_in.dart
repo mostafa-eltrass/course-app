@@ -1,3 +1,4 @@
+import 'package:course_app/auth/sign_up.dart';
 import 'package:course_app/auth/widget/custom_text_field.dart';
 import 'package:course_app/auth/widget/custombutton.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,9 @@ class SignIn extends StatelessWidget {
                 children: [
                   Text('create a new account? '),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context,  SignUp.id);
+                    },
                     child: Text('Sign up', style: TextStyle(color: Colors.black)),
                   ),
                 ],

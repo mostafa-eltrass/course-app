@@ -1,4 +1,5 @@
 import 'package:course_app/auth/sign_in.dart';
+import 'package:course_app/auth/sign_up.dart';
 import 'package:course_app/onboarding/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,12 +22,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      initialRoute: SignIn.id,
+      initialRoute: OnBoardingScreen.id,
       routes: {
 
         "OnBoardingScreen": (context) => OnBoardingScreen(),
         "HomeScreen": (context) =>   MyHomePage(title: "Home"),
         WelcomeScreen.id :(context) => WelcomeScreen(),
+        SignUp.id :(context) => SignUp(),
         SignIn.id :(context) => SignIn()
       },
     );

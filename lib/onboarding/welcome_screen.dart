@@ -1,14 +1,18 @@
+import 'package:course_app/auth/sign_in.dart';
+import 'package:course_app/auth/sign_up.dart';
 import 'package:flutter/material.dart';
-
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   static String id = "WelcomeScreen";
-
+  @override
+   WelcomeScreenState createState() =>  WelcomeScreenState();
+}
+class  WelcomeScreenState extends State<WelcomeScreen> {
+  String selectedButton = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-
           Container(
             width: double.infinity,
             height: double.infinity,
@@ -19,7 +23,6 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
           ),
-
           Container(
             width: double.infinity,
             height: double.infinity,
@@ -34,14 +37,27 @@ class WelcomeScreen extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, "RegisterScreen");
+                    setState(() {
+                      selectedButton = "signup";
+                    });
+                    Navigator.pushNamed(context, SignUp.id);
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 16),
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.black,
+                    backgroundColor:
+                    selectedButton == "signup"
+                        ? Colors.white
+                        : Colors.transparent,
+                    foregroundColor:
+                    selectedButton == "signup"
+                        ? Colors.black
+                        : Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
+                      side: BorderSide(
+                        color: Colors.white,
+                        width: 2,
+                      ),
                     ),
                   ),
                   child: Text(
@@ -49,17 +65,27 @@ class WelcomeScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),
-
                 SizedBox(height: 12),
-
-                // زر Sign In
                 OutlinedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, "LoginScreen");
+                    setState(() {
+                      selectedButton = "signin";
+                    });
+                    Navigator.pushNamed(context, SignIn.id);
                   },
                   style: OutlinedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 16),
-                    side: BorderSide(color: Colors.white, width: 2),
+
+                    backgroundColor:
+                    selectedButton == "signin"
+                        ? Colors.white
+                        : Colors.transparent,
+
+                    side: BorderSide(
+                      color: Colors.white,
+                      width: 2,
+                    ),
+
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
@@ -68,7 +94,9 @@ class WelcomeScreen extends StatelessWidget {
                     "Sign In",
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.white,
+                      color: selectedButton == "signin"
+                          ? Colors.black
+                          : Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
