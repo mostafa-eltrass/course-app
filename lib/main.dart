@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      initialRoute: HomeScreen.id,
+      initialRoute: OnBoardingScreen.id,
       routes: {
 
          OnBoardingScreen.id : (context) => OnBoardingScreen(),

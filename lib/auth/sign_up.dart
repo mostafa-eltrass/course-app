@@ -1,6 +1,7 @@
 import 'package:course_app/auth/sign_in.dart';
 import 'package:course_app/auth/widget/custom_text_field.dart';
 import 'package:course_app/auth/widget/custombutton.dart';
+import 'package:course_app/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatelessWidget {
@@ -44,7 +45,9 @@ class SignUp extends StatelessWidget {
               SizedBox(height: 25),
               CustomButton(
                 text: 'Sign Up',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, HomeScreen.id);
+                },
               ),
               SizedBox(height: 20),
               Row(

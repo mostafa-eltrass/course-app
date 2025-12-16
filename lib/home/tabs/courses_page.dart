@@ -6,45 +6,46 @@ class CoursesPage extends StatefulWidget {
   const CoursesPage({super.key});
 
   @override
-  State<CoursesPage> createState() => _CoursesPageState();
+  State<CoursesPage> createState() =>  CoursesPageState();
 }
 
-class _CoursesPageState extends State<CoursesPage>
+class CoursesPageState extends State<CoursesPage>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<Color?> _gradientAnimation;
+  late AnimationController controller;
+  late Animation<Color?> gradientAnimation;
 
   @override
   void initState() {
     super.initState();
-    _controller =
+    controller =
     AnimationController(vsync: this, duration: const Duration(seconds: 8))
       ..repeat(reverse: true);
 
-    _gradientAnimation = ColorTween(
+    gradientAnimation = ColorTween(
       begin: Colors.purpleAccent,
       end: Colors.blueAccent,
-    ).animate(_controller);
+    ).animate(controller);
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: _gradientAnimation,
+      animation: gradientAnimation,
       builder: (context, child) {
-        final gradientColor = _gradientAnimation.value ?? Colors.purpleAccent;
+        final gradientColor = gradientAnimation.value ?? Colors.purpleAccent;
         return Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            title: const Text(
+            title: Text(
               "Courses",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22,
+                  color: Colors.white),
             ),
             centerTitle: true,
             backgroundColor: Colors.transparent,
